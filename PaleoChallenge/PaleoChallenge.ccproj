@@ -36,6 +36,24 @@
     <ServiceConfiguration Include="ServiceConfiguration.Local.cscfg" />
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PaleoChallenge.UI\PaleoChallenge.UI.csproj">
+      <Name>PaleoChallenge.UI</Name>
+      <Project>{8eb93edf-9e0b-41a2-961c-937af8aae4ea}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>PaleoChallenge.UI</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PaleoChallenge.UIContent\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PaleoChallenge.UIContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
