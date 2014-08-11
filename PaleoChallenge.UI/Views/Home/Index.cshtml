@@ -1,3 +1,11 @@
-﻿<div data-ng-controller="test">
-    Testing text binding: {{text}}
+﻿<div data-ng-controller="home">
+    <div data-ng-repeat="entry in entries">{{entry.Data}}</div>    
 </div>
+
+@section models
+{
+    <script type="text/javascript">
+        var defaultModel = @Html.Raw(Json.Encode(Model));
+    </script>
+
+}

@@ -18,7 +18,9 @@ namespace PaleoChallenge.UI
                         "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/src")
-                    .IncludeDirectory("~/App/src/", "*.js", true));  
+                    .IncludeDirectory("~/App/src/", "*.js", false)
+                    .IncludeDirectory("~/App/src/controllers/", "*.js", true)
+                    .IncludeDirectory("~/App/src/services/", "*.js", true));  
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

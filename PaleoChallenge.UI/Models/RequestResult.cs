@@ -24,7 +24,7 @@ namespace PaleoChallenge.UI.Models
 
             try
             {
-                result.Data = fn();                
+                result.Model = fn();                
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace PaleoChallenge.UI.Models
             return result;
         }
 
-        public TModel Data { get; set; }
+        public TModel Model { get; set; }
         
         public bool IsSuccess { get; set; }
         

@@ -225,6 +225,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\src\app.js" />
+    <Content Include="App\src\controllers\home.js" />
+    <Content Include="App\src\services\errorProvider.js" />
+    <Content Include="App\src\services\eventService.js" />
+    <Content Include="App\src\services\restService.js" />
+    <Content Include="App\src\services\webapiProvider.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
