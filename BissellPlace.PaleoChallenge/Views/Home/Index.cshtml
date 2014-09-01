@@ -1,0 +1,32 @@
+﻿@using BissellPlace.PaleoChallenge.Framework.Http.Helpers
+<div data-ng-controller="home">    
+    <div class="row">
+        Todays Points: <input data-ng-model="record.Data" type="number"/>        
+        Weight In: <input data-ng-model="record.Weight" type="number"/>
+        <a class="btn btn-primary" ng-click="save(record)">Log</a>        
+    </div>
+    
+    <div data-ng-repeat="entry in entries">{{entry.Data}}, {{entry.Type}} {{entry.TimeStamp}}, {{entry.Challenger}}</div>
+
+    <nvd3-line-plus-bar-chart data="exampleData"
+                              id="exampleId"
+                              margin="{left:100,top:20,bottom:20,right:100}"
+                              xaxistickformat="xAxisTickFormat()"
+                              y1axislabel="{{y1axislabeltext}}"
+                              y2axislabel="{{y2axislabeltext}}"
+                              y1axistickformat="y1AxisTickFormat()"
+                              forcey="[0]"
+                              showlegend="true"
+                              legendwidth="200"
+                              legendheight="300">
+    </nvd3-line-plus-bar-chart>    
+</div>
+
+@{ Html.TemplateRender("~/Content/views"); }
+@section models
+{    
+    <script type="text/javascript">
+        var defaultModel = @Html.Raw(Json.Encode(Model))@Html.Raw(";")
+
+    </script>    
+}
