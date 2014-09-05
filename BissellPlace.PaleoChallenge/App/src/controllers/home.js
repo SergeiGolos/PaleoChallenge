@@ -66,6 +66,10 @@
                             "bar": true,
                             "values": loadType(data, "Points")
                         },
+						{
+							"key": "Comment",
+							"values": loadType(data, "Comment")
+						},
                         {
                             "key": "Weight",
                             "values": loadType(data, "Weight")
@@ -82,10 +86,34 @@
                 noop.resolve();
                 $q.all([
                     entry.Data ? rest.set(entry) : noop.promise,
-                    entry.Weight ? rest.set({ Type: "Weight", Data: entry.Weight }) : noop.promise
+                    entry.Weight ? rest.set({ Type: "Weight", Data: entry.Weight }) : noop.promise,
+					entry.Comment ? rest.set({ Type: "Comment", Data: entry.Comment}): noop.promise
                 ]).then(get);
             }
             get();
+
+            $scope.tabs = [
+				{
+					title: "Points",
+					url: "tab.points.html"
+				},
+				{
+					title: "Weight",
+					url: "tab.weight.html"
+				},
+				{
+					title: "Comments",
+					url: "tab.comments.html"
+				}];
+            $scope.currentTab = 'tab.points.html';
+			
+            $scope.onClickTab = function (tab) {            	
+            	$scope.currentTab = tab.url;
+            };
+
+            $scope.isActiveTab = function (tabUrl) {            	
+            	return tabUrl == $scope.currentTab;
+            };
         }
     ]);
 })();
