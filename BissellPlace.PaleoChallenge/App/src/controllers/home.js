@@ -8,6 +8,7 @@
             var rest = restService('Entry');
             $scope.y1axislabeltext = "Challange Points";
             $scope.y2axislabeltext = "Weight";              
+            
 
             $scope.xAxisTickFormat = function () {
                 return function (d) {
@@ -26,24 +27,47 @@
                 }
             }
             function loadType(data, type) {
-                return _.chain(data)
-                    .filter(function(item) { return item.Type == type; })
-                    .map(function (item) { return [item.TimeStamp, item.Data]; })
+                var list = _.chain(data)
+                    .filter(function (item) { return item.Type == type; })
+                    .forEach(function (item) {
+                        item.TimeStamp = moment(item.TimeStamp, moment.ISO_8601);
+                        item.CheckDate = item.TimeStamp.format('l');
+                    })
                     .value();
-            }
 
+                var result = _.chain(_.range(5))
+                    .map(function (item) { return moment().subtract(item, 'days'); })
+                    .map(function (item) {
+                        var check = item.format('l');
+                        return _.find(list, function (i) {
+                            return i.CheckDate == check;
+                        }) || { Type: type, TimeStamp: item, CheckDate: check, Data: 0 };
+                    })
+                .map(function (item) {
+                    return [item.TimeStamp.utc(), item.Data];
+                }).value();
+
+
+                //var result = 
+                //        var date = 
+                //        console.log(date, date.date().uc);
+                //        return ;
+                //    })
+                //    .value();
+                return result;
+            }
 
             function get() {
                 rest.get().then(function(data) {                    
 
                     $scope.exampleData = [
                         {
-                            "key": "Quantity",
+                            "key": "Points",
                             "bar": true,
                             "values": loadType(data, "Points")
                         },
                         {
-                            "key": "Price",
+                            "key": "Weight",
                             "values": loadType(data, "Weight")
                         }
                     ];

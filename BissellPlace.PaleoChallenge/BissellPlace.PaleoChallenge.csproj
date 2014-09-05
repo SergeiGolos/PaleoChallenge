@@ -208,6 +208,8 @@
     <Content Include="App\src\services\eventService.js" />
     <Content Include="App\src\services\restService.js" />
     <Content Include="App\src\services\webapiProvider.js" />
+    <Content Include="App\views\entries\Points.html" />
+    <Content Include="App\views\entries\Weight.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\nv.d3.css" />
@@ -583,7 +585,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\src\directives\" />
-    <Folder Include="App\views\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

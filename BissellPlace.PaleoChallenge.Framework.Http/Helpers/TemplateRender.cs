@@ -17,7 +17,7 @@ namespace BissellPlace.PaleoChallenge.Framework.Http.Helpers
             var context = new BundleContext(helper.ViewContext.HttpContext, BundleTable.Bundles, path);
             var result = bundle.ApplyTransforms(context, path, bundle.EnumerateFiles(context));
 
-            helper.Raw(result.Content);
+            helper.ViewContext.Writer.Write(result.Content);
         } 
     }
 }

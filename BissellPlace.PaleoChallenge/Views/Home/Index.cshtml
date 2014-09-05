@@ -5,9 +5,6 @@
         Weight In: <input data-ng-model="record.Weight" type="number"/>
         <a class="btn btn-primary" ng-click="save(record)">Log</a>        
     </div>
-    
-    <div data-ng-repeat="entry in entries">{{entry.Data}}, {{entry.Type}} {{entry.TimeStamp}}, {{entry.Challenger}}</div>
-
     <nvd3-line-plus-bar-chart data="exampleData"
                               id="exampleId"
                               margin="{left:100,top:20,bottom:20,right:100}"
@@ -20,6 +17,7 @@
                               legendwidth="200"
                               legendheight="300">
     </nvd3-line-plus-bar-chart>    
+    <div data-ng-include='"views/entries/" + entry.Type + ".html"' data-ng-repeat="entry in entries">{{entry.CheckDate}} </div>
 </div>
 
 @{ Html.TemplateRender("~/Content/views"); }

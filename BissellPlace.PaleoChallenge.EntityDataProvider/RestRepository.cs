@@ -21,6 +21,7 @@ namespace BissellPlace.PaleoChallenge.EntityDataProvider
 
         public IEnumerable<TModel> Query(Expression<Func<TModel, bool>> expression)
         {
+
             return this.DbContext.Set<TModel>().AsQueryable().Where(expression).ToList();
         }
 
