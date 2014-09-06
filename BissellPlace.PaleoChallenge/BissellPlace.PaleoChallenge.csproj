@@ -209,6 +209,7 @@
     <Content Include="App\src\services\restService.js" />
     <Content Include="App\src\services\webapiProvider.js" />
     <Content Include="App\tests\controllers\home.tests.js" />
+    <Content Include="App\tests\services\webapiProvider.tests.js" />
     <Content Include="App\tests\services\errorProvider.tests.js" />
     <Content Include="App\views\entries\Points.html" />
     <Content Include="App\views\entries\Weight.html" />
