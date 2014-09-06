@@ -1,10 +1,10 @@
 ﻿(function() {
     var app = angular.module('paleo');
     app.controller('home', [
-        '$q',
         '$scope',
+        '$q',        
         'restService',
-        function($q, $scope, restService) {
+        function ($scope, $q, restService) {
             var rest = restService('Entry');
             $scope.y1axislabeltext = "Challange Points";
             $scope.y2axislabeltext = "Weight";              
