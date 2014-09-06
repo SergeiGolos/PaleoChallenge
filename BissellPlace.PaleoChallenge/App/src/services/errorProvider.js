@@ -15,7 +15,7 @@
                     }
 
                     angular.forEach(e.data.Messages, raise);
-                    throw('Http request failed.');
+                    throw(new Error('Http request failed.'));
                 },
                 onError: function() {
                     return eventHandler.observable;
