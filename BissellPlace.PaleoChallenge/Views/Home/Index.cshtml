@@ -1,8 +1,18 @@
 ﻿@using BissellPlace.PaleoChallenge.Framework.Http.Helpers
 <div data-ng-controller="home">    
     <div class="row">
-        Todays Points: <input data-ng-model="record.Data" type="number"/>        
-        Weight In: <input data-ng-model="record.Weight" type="number"/>
+		<ul>
+			<li ng-repeat="tab in tabs"
+				ng-class="{active:isActiveTab(tab.url)}"
+				ng-click="onClickTab(tab)">{{tab.title}}</li>
+
+		</ul>
+		<div id="mainView">
+            <div ng-include="currentTab"></div>
+        </div>
+		
+
+		<br />
         <a class="btn btn-primary" ng-click="save(record)">Log</a>        
     </div>
     <nvd3-line-plus-bar-chart data="chart"
@@ -25,5 +35,25 @@
 {    
     <script type="text/javascript">
         var defaultModel = @Html.Raw(Json.Encode(Model) + ";");
-    </script>    
+    </script>    	
+}
+
+
+@{
+	<script type="text/ng-template" id="tab.points.html">
+		<div id="Points">			
+			Today's Points <input type="text" data-ng-model ="record.Data" name="points" type="number"/>								
+		</div>
+	</script>
+	<script type="text/ng-template" id="tab.weight.html">
+		<div id="Weight">
+			Weigh In: <input type="text" data-ng-model="record.Weight" type="number"/>
+		</div>
+	</script>
+	<script type="text/ng-template" id="tab.comments.html">
+		<div id="Comments">
+			Comments <input type="text" data-ng-model="record.Comment" name="Comments" />
+		</div>
+	</script>
+>>>>>>> origin/master
 }

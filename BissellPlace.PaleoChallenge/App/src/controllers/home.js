@@ -7,30 +7,30 @@
         'restService',
         'chartDataProvider',
         'model',
-        function ($scope, $q, restService, chartDataProvider, model) {
+        function($scope, $q, restService, chartDataProvider, model) {
             var rest = restService('Entry');
             $scope.y1axislabeltext = "Challange Points";
-            $scope.y2axislabeltext = "Weight";              
-           
-            $scope.xAxisTickFormat = function () {
-                return function (d) {
-                    return d3.time.format('%x')(new Date(d));  //uncomment for date format
+            $scope.y2axislabeltext = "Weight";
+
+            $scope.xAxisTickFormat = function() {
+                return function(d) {
+                    return d3.time.format('%x')(new Date(d)); //uncomment for date format
                 }
             }
 
-            $scope.y1AxisTickFormat = function () {
-                return function (d) {
+            $scope.y1AxisTickFormat = function() {
+                return function(d) {
                     return d3.format(',f')(d);
                 }
             }
 
-            $scope.y2AxisTickFormat = function () {
-                return function (d) {
+            $scope.y2AxisTickFormat = function() {
+                return function(d) {
                     return '$' + d3.format(',.2f')(d);
                 }
-            }            
+            }
 
-            $scope.record = { Id: undefined , Type : 'Points' };
+            $scope.record = { Id: undefined, Type: 'Points' };
             $scope.records = model;
             $scope.chart = [
                 {
@@ -44,14 +44,40 @@
                 }
             ];
 
-            $scope.save = function (entry) {
+            $scope.save = function(entry) {
                 var noop = $q.defer();
                 noop.resolve();
                 $q.all([
                     entry.Data ? rest.set(entry) : noop.promise,
-                    entry.Weight ? rest.set({ Type: "Weight", Data: entry.Weight }) : noop.promise
+                    entry.Weight ? rest.set({ Type: "Weight", Data: entry.Weight }) : noop.promise,
+                    entry.Comment ? rest.set({ Type: "Comment", Data: entry.Comment }) : noop.promise
                 ]).then(get);
-            }            
+
+                $scope.tabs = [
+                    {
+                        title: "Points",
+                        url: "tab.points.html"
+                    },
+                    {
+                        title: "Weight",
+                        url: "tab.weight.html"
+                    },
+                    {
+                        title: "Comments",
+                        url: "tab.comments.html"
+                    }
+                ];
+
+                $scope.currentTab = 'tab.points.html';
+
+                $scope.onClickTab = function(tab) {
+                    $scope.currentTab = tab.url;
+                };
+
+                $scope.isActiveTab = function(tabUrl) {
+                    return tabUrl == $scope.currentTab;
+                };
+            }
         }
     ]);
 })(defaultModel);

@@ -2125,11 +2125,23 @@
               nv.addGraph( {
                 generate: function () {
                   initializeMargin( scope, attrs );
-                  var chart = nv.models.linePlusBarChart().width( scope.width ).height( scope.height ).margin( scope.margin ).x( attrs.x === undefined ? function ( d ) {
-                    return d[ 0 ];
-                  } : scope.x() ).y( attrs.y === undefined ? function ( d ) {
-                    return d[ 1 ];
-                  } : scope.y() ).showLegend( attrs.showlegend === undefined ? false : attrs.showlegend === 'true' ).tooltips( attrs.tooltips === undefined ? false : attrs.tooltips === 'true' ).noData( attrs.nodata === undefined ? 'No Data Available.' : scope.nodata ).interpolate( attrs.interpolate === undefined ? 'linear' : attrs.interpolate ).color( attrs.color === undefined ? nv.utils.defaultColor() : scope.color() );
+                  var chart = nv.models
+                      .linePlusBarChart()
+                      .width(scope.width)
+                      .height(scope.height)
+                      .margin(scope.margin)
+                      .x(attrs.x === undefined ? function (d) {
+                        return d[ 0 ];
+                      } : scope.x())
+                      .y(attrs.y === undefined ? function (d) {
+                        return d[ 1 ];
+                      } : scope.y())
+                      .showLegend(attrs.showlegend === undefined ? false : attrs.showlegend === 'true')
+                      .tooltips(attrs.tooltips === undefined ? false : attrs.tooltips === 'true')
+                      .noData(attrs.nodata === undefined ? 'No Data Available.' : scope.nodata)
+                      .interpolate(attrs.interpolate === undefined ? 'linear' : attrs.interpolate)
+                      .color(attrs.color === undefined ? nv.utils.defaultColor() : scope.color());
+
                   if ( attrs.forcex ) {
                     chart.lines.forceX( scope.$eval( attrs.forcex ) );
                     chart.bars.forceX( scope.$eval( attrs.forcex ) );
