@@ -6,8 +6,6 @@ namespace BissellPlace.PaleoChallenge.Framework.DomainModel
     {
         public int Id { get; set; }
         public virtual User Challenger { get; set; }
-        public string Type { get; set; }
-        public string Data { get; set; }
         public DateTime TimeStamp { get; set; }    
     }
 }

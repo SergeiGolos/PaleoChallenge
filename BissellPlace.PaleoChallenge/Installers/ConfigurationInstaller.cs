@@ -4,6 +4,7 @@ using System.Web.Http.Dispatcher;
 using System.Web.Mvc;
 using BissellPlace.PaleoChallenge.Framework;
 using BissellPlace.PaleoChallenge.Framework.Http;
+using BissellPlace.PaleoChallenge.Models;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -14,7 +15,7 @@ namespace BissellPlace.PaleoChallenge.Installers
     /// <summary>
     /// Registers the HTTP controllers with the container.
     /// </summary>
-    public class SecurityInstaller : IWindsorInstaller
+    public class ConfigurationInstaller : IWindsorInstaller
     {
         /// <summary>
         /// Adds the HTTP controllers to the container.
@@ -24,7 +25,11 @@ namespace BissellPlace.PaleoChallenge.Installers
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "This is handled by the framework")]
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<ISecurityUser>().ImplementedBy<SingleSecurityUser>().LifestylePerWebRequest());
+            // Set the controller factory to use.
+            ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));
+            // Set the controller factory to use.
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new WindsorHttpControllerActivator(container));
+            container.Register(Component.For<ISystemConfiguration>().ImplementedBy<SystemConfiguration>().LifestyleSingleton());
         }
     }
 }

@@ -58,10 +58,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateWithSeed.cs" />
     <Compile Include="EntityFrameworkFacility.cs" />
+    <Compile Include="IDataProvider.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="PaleoChallengeContext.cs" />
     <Compile Include="Installer.cs" />
+    <Compile Include="Providers\ViewSummaryProvider.cs" />
+    <Compile Include="Repositories\PointEntryRepository.cs" />
+    <Compile Include="Repositories\CommentEntryRepository.cs" />
+    <Compile Include="Repositories\WeightEntryRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

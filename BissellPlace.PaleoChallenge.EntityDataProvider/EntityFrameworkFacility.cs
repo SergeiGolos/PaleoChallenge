@@ -14,6 +14,10 @@ namespace BissellPlace.PaleoChallenge.EntityDataProvider
                 Classes.FromAssemblyContaining(typeof(RestRepository<>))
                     .Pick()
                     .WithServiceAllInterfaces()
+                    .LifestylePerWebRequest(),
+                Classes.FromAssemblyContaining(typeof(IDataProvider<>))
+                    .Pick()
+                    .WithServiceAllInterfaces()
                     .LifestylePerWebRequest());
         }
     }

@@ -189,12 +189,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Installers\ConfigurationInstaller.cs" />
     <Compile Include="Installers\SecurityInstaller.cs" />
     <Compile Include="Installers\HttpInstaller.cs" />
     <Compile Include="Installers\MapperInstaller.cs" />
+    <Compile Include="Models\SystemConfiguration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\View\EntrySummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -204,15 +207,18 @@
   <ItemGroup>
     <Content Include="App\src\app.js" />
     <Content Include="App\src\controllers\home.js" />
+    <Content Include="App\src\services\chartDataProvider.js" />
     <Content Include="App\src\services\errorProvider.js" />
     <Content Include="App\src\services\eventService.js" />
     <Content Include="App\src\services\restService.js" />
     <Content Include="App\src\services\webapiProvider.js" />
     <Content Include="App\tests\controllers\home.tests.js" />
+    <Content Include="App\tests\services\chartDataProvider.tests.js" />
     <Content Include="App\tests\services\webapiProvider.tests.js" />
     <Content Include="App\tests\services\errorProvider.tests.js" />
-    <Content Include="App\views\entries\Points.html" />
-    <Content Include="App\views\entries\Weight.html" />
+    <Content Include="App\views\entries\CommentEntry.html" />
+    <Content Include="App\views\entries\PointEntry.html" />
+    <Content Include="App\views\entries\WeightEntry.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\nv.d3.css" />

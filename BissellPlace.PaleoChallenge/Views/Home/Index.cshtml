@@ -5,7 +5,7 @@
         Weight In: <input data-ng-model="record.Weight" type="number"/>
         <a class="btn btn-primary" ng-click="save(record)">Log</a>        
     </div>
-    <nvd3-line-plus-bar-chart data="exampleData"
+    <nvd3-line-plus-bar-chart data="chart"
                               id="exampleId"
                               margin="{left:100,top:20,bottom:20,right:100}"
                               xaxistickformat="xAxisTickFormat()"
@@ -17,14 +17,13 @@
                               legendwidth="200"
                               legendheight="300">
     </nvd3-line-plus-bar-chart>    
-    <div data-ng-include='"views/entries/" + entry.Type + ".html"' data-ng-repeat="entry in entries">{{entry.CheckDate}} </div>
+    <div data-ng-include='"views/entries/" + entry.Type + ".html"' data-ng-repeat="entry in records">{{entry.CheckDate}} </div>
 </div>
 
 @{ Html.TemplateRender("~/Content/views"); }
 @section models
 {    
     <script type="text/javascript">
-        var defaultModel = @Html.Raw(Json.Encode(Model))@Html.Raw(";")
-
+        var defaultModel = @Html.Raw(Json.Encode(Model) + ";");
     </script>    
 }

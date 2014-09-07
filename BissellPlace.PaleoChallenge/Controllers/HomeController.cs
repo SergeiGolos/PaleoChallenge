@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using BissellPlace.PaleoChallenge.Framework;
+using BissellPlace.PaleoChallenge.Framework.Providers;
+using BissellPlace.PaleoChallenge.Providers;
 
 namespace BissellPlace.PaleoChallenge.Controllers
 {    
@@ -10,13 +12,17 @@ namespace BissellPlace.PaleoChallenge.Controllers
         /// </summary>
         private readonly ISecurityUser _user;
 
+        private readonly IViewSummaryProvider _viewProvider;
+
         /// <summary>
         /// Creates an instance of the Home Controller.
         /// </summary>
         /// <param name="user">The user in the current context.</param>
-        public HomeController(ISecurityUser user)
+        /// <param name="viewProvider">The view summary provider for the controler to use.</param>
+        public HomeController(ISecurityUser user, IViewSummaryProvider viewProvider)
         {
             _user = user;
+            _viewProvider = viewProvider;
         }
 
         /// <summary>
@@ -27,7 +33,7 @@ namespace BissellPlace.PaleoChallenge.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            return View();
+            return View(_viewProvider.GetWeekSummary());
         }
     }
 }

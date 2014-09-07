@@ -1,39 +1,28 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
 using BissellPlace.PaleoChallenge.Framework.DomainModel;
+using System.Collections.Generic;
+using Castle.Core.Internal;
+using BissellPlace.PaleoChallenge.Framework;
 
 namespace BissellPlace.PaleoChallenge.EntityDataProvider
 {
-    public class CreateWithSeed : CreateDatabaseIfNotExists<PaleoChallengeContext>
-    {
-        public override void InitializeDatabase(PaleoChallengeContext context)
-        {
-            base.InitializeDatabase(context);
-            context.Set<Entry>()
-                .Add(new Entry()
-                {
-                    Challenger = new User() { UserName = "SingleUser", LastAccess = DateTime.Now },
-                    Data = "1",
-                    Type = "Points",
-                    TimeStamp = DateTime.Now.AddDays(-1)
-                });
-
-            context.SaveChanges();
-        }
-    }
-
-
     public class PaleoChallengeContext : DbContext, IDbContext
     {
-        public PaleoChallengeContext()
+        public PaleoChallengeContext(ISystemConfiguration config)
             : base("PaleoChallengeContext")
         {
-            Database.SetInitializer(new CreateWithSeed());
+            Database.SetInitializer(new CreateWithSeed(config.CreateNewDatabase));
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Entry> Entries { get; set; }
+
+        public DbSet<WeightEntry> Weights { get; set; }
+        public DbSet<PointEntry> Points { get; set; }
+        public DbSet<CommentEntry> Comments { get; set; }
 
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
         {

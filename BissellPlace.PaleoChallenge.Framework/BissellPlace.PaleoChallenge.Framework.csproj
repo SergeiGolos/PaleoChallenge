@@ -39,14 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\ICommentEntryRepository.cs" />
+    <Compile Include="DataAccess\IWeightEntryRepository.cs" />
+    <Compile Include="DataAccess\IPointEntryRepository.cs" />
     <Compile Include="DataAccess\IEntryRepository.cs" />
     <Compile Include="DataAccess\IUserRepository.cs" />
+    <Compile Include="DomainModel\CommentEntry.cs" />
     <Compile Include="DomainModel\Entry.cs" />
+    <Compile Include="DomainModel\LinkEntry.cs" />
+    <Compile Include="DomainModel\PointEntry.cs" />
     <Compile Include="DomainModel\User.cs" />
+    <Compile Include="DomainModel\WeightEntry.cs" />
     <Compile Include="IRestRepository.cs" />
     <Compile Include="ISecurityUser.cs" />
     <Compile Include="IStoredData.cs" />
+    <Compile Include="ISystemConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\IViewSummaryProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
