@@ -42,18 +42,24 @@
 @{
 	<script type="text/ng-template" id="tab.points.html">
 		<div id="Points">			
-			Today's Points <input type="text" data-ng-model ="record.Data" name="points" type="number"/>								
+			Today's Points: Food <input type="text" data-ng-model ="record.Data" name="points" type="number" ng-keypress="OnEnterTab($event)"/>	
+			8 Hours of sleep <input type="checkbox" data-ng-model="record.Sleep" name="sleep" value="1" ng-keypress="OnEnterTab($event)"/>
+			Workout <input type="checkbox" data-ng-model="record.Workout" name="workout" value="1" ng-keypress="OnEnterTab($event)"/>
 		</div>
 	</script>
 	<script type="text/ng-template" id="tab.weight.html">
 		<div id="Weight">
-			Weigh In: <input type="text" data-ng-model="record.Weight" type="number"/>
+			Weigh In: <input type="text" data-ng-model="record.Weight" type="number" ng-keypress="OnEnterTab($event)"/>
 		</div>
 	</script>
 	<script type="text/ng-template" id="tab.comments.html">
 		<div id="Comments">
-			Comments <input type="text" data-ng-model="record.Comment" name="Comments" />
+			Comments <input type="text" data-ng-model="record.Comment" name="Comments" ng-keypress="OnEnterTab($event)"/>
 		</div>
 	</script>
->>>>>>> origin/master
+	<script type="text/ng-template" id="tab.date.html">
+		<div id="Date">
+			Specify Date <input type="date" data-ng-model="record.Date" name="DateTime"/>
+		</div>
+	</script>
 }

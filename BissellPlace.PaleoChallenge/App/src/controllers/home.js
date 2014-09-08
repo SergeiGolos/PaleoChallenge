@@ -7,7 +7,8 @@
         'restService',
         'chartDataProvider',
         'model',
-        function($scope, $q, restService, chartDataProvider, model) {
+		'$filter',
+        function($scope, $q, restService, chartDataProvider, model,$filter) {
             var rest = restService('Entry');
             $scope.y1axislabeltext = "Challange Points";
             $scope.y2axislabeltext = "Weight";
@@ -45,14 +46,18 @@
             ];
 
             $scope.save = function(entry) {
-                var noop = $q.defer();
-                noop.resolve();
-                $q.all([
+            	var noop = $q.defer();
+            	noop.resolve();
+            	$q.all([
                     entry.Data ? rest.set(entry) : noop.promise,
+					entry.Workout ? rest.set({ Type: "Workout", Data: entry.Workout }) : noop.promise,
+					entry.Sleep ? rest.set({ Type: "Sleep", Data: entry.Sleep }) : noop.promise,
                     entry.Weight ? rest.set({ Type: "Weight", Data: entry.Weight }) : noop.promise,
                     entry.Comment ? rest.set({ Type: "Comment", Data: entry.Comment }) : noop.promise
-                ]).then(get);
+            	]).then(get);
 
+            }
+			$scope.initTab = function(){
                 $scope.tabs = [
                     {
                         title: "Points",
@@ -63,12 +68,16 @@
                         url: "tab.weight.html"
                     },
                     {
-                        title: "Comments",
-                        url: "tab.comments.html"
+                    	title: "Comments",
+                    	url: "tab.comments.html"
+                    },
+                    {
+                    	title: "Date",
+                    	url: "tab.date.html"
                     }
                 ];
 
-                $scope.currentTab = 'tab.points.html';
+                $scope.currentTab = "tab.points.html";
 
                 $scope.onClickTab = function(tab) {
                     $scope.currentTab = tab.url;
@@ -77,7 +86,22 @@
                 $scope.isActiveTab = function(tabUrl) {
                     return tabUrl == $scope.currentTab;
                 };
-            }
+
+                $scope.OnEnterTab = function (keyEvent) {
+                	
+                	if (keyEvent.which === 13) {
+
+                		var tab = $filter("filter")($scope.tabs, { url: $scope.currentTab })[0];
+                		var index = $scope.tabs.indexOf(tab);
+                		$scope.currentTab = $scope.tabs[index % 4 + 1].url;
+                	}
+                }
+                $scope.Today = function () {
+                	return new Date();
+                }
+                
+			}
+			$scope.initTab();
         }
     ]);
 })(defaultModel);
