@@ -61,10 +61,20 @@ namespace BissellPlace.PaleoChallenge.EntityDataProvider
                     context.Set<PointEntry>().Add(new PointEntry()
                     {
                         Record = record,
-                        Bonus = _random.Next(0, 2),
+                        Workout = randomBool() ? 1 : 0,
+						Sleep = randomBool() ? 1 : 0,
                         Points = _random.Next(0, 4)
                     });
                 }
+
+				if (randomBool())
+				{
+					context.Set<CommentEntry>().Add(new CommentEntry()
+					{
+						Record = record,
+						Comment = "Random Comment"
+					});
+				}
             };
 
             Enumerable.Range(1, 5).ForEach(value =>

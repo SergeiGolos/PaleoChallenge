@@ -4,7 +4,7 @@ namespace BissellPlace.PaleoChallenge.Framework.DomainModel
 {
     public class CommentEntry : LinkEntry<CommentEntry>
     {
-        public string Data { get; set; }
+        public string Comment { get; set; }
         public bool IsPublic { get; set; }    
     }
 }

@@ -219,9 +219,6 @@
     <Content Include="App\views\entries\CommentEntry.html" />
     <Content Include="App\views\entries\PointEntry.html" />
     <Content Include="App\views\entries\WeightEntry.html" />
-    <Content Include="App\views\entries\Comment.html" />
-    <Content Include="App\views\entries\Points.html" />
-    <Content Include="App\views\entries\Weight.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\nv.d3.css" />

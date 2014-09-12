@@ -3,12 +3,12 @@
     app.value('model', defaultModel);
     app.controller('home', [
         '$scope',
-        '$q',        
+        '$q',   
+		'$filter',
         'restService',
         'chartDataProvider',
         'model',
-		'$filter',
-        function($scope, $q, restService, chartDataProvider, model,$filter) {
+        function ($scope, $q, $filter, restService, chartDataProvider, model) {
             var rest = restService('Entry');
             $scope.y1axislabeltext = "Challange Points";
             $scope.y2axislabeltext = "Weight";
@@ -50,9 +50,7 @@
             	noop.resolve();
             	$q.all([
                     entry.Data ? rest.set(entry) : noop.promise,
-					entry.Workout ? rest.set({ Type: "Workout", Data: entry.Workout }) : noop.promise,
-					entry.Sleep ? rest.set({ Type: "Sleep", Data: entry.Sleep }) : noop.promise,
-                    entry.Weight ? rest.set({ Type: "Weight", Data: entry.Weight }) : noop.promise,
+					entry.Weight ? rest.set({ Type: "Weight", Data: entry.Weight }) : noop.promise,
                     entry.Comment ? rest.set({ Type: "Comment", Data: entry.Comment }) : noop.promise
             	]).then(get);
 
@@ -94,6 +92,7 @@
                 		var tab = $filter("filter")($scope.tabs, { url: $scope.currentTab })[0];
                 		var index = $scope.tabs.indexOf(tab);
                 		$scope.currentTab = $scope.tabs[index % 4 + 1].url;
+
                 	}
                 }
                 $scope.Today = function () {

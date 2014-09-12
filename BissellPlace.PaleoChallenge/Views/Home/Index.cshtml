@@ -8,7 +8,7 @@
 
 		</ul>
 		<div id="mainView">
-            <div ng-include="currentTab"></div>
+            <div ng-include="currentTab" ng-keypress="OnEnterTab($event)"></div>
         </div>
 		
 
@@ -42,19 +42,19 @@
 @{
 	<script type="text/ng-template" id="tab.points.html">
 		<div id="Points">			
-			Today's Points: Food <input type="text" data-ng-model ="record.Data" name="points" type="number" ng-keypress="OnEnterTab($event)"/>	
-			8 Hours of sleep <input type="checkbox" data-ng-model="record.Sleep" name="sleep" value="1" ng-keypress="OnEnterTab($event)"/>
-			Workout <input type="checkbox" data-ng-model="record.Workout" name="workout" value="1" ng-keypress="OnEnterTab($event)"/>
+			Today's Points: Food <input type="text" data-ng-model ="record.Data" name="points" type="number"/>	
+			8 Hours of sleep <input type="checkbox" data-ng-model="record.Sleep" name="sleep" value="1"/>
+			Workout <input type="checkbox" data-ng-model="record.Workout" name="workout" value="1"/>
 		</div>
 	</script>
 	<script type="text/ng-template" id="tab.weight.html">
 		<div id="Weight">
-			Weigh In: <input type="text" data-ng-model="record.Weight" type="number" ng-keypress="OnEnterTab($event)"/>
+			Weigh In: <input type="text" data-ng-model="record.Weight" type="number" />
 		</div>
 	</script>
 	<script type="text/ng-template" id="tab.comments.html">
 		<div id="Comments">
-			Comments <input type="text" data-ng-model="record.Comment" name="Comments" ng-keypress="OnEnterTab($event)"/>
+			Comments <input type="text" data-ng-model="record.Comment" name="Comments"/>
 		</div>
 	</script>
 	<script type="text/ng-template" id="tab.date.html">
