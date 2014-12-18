@@ -37,11 +37,11 @@
                 {
                     "key": "Points",
                     "bar": true,
-                    "values": chartDataProvider.weekSummary(model, "Points")
+                    "values": chartDataProvider.weekSummary(model, "PointEntry")
                 },
                 {
                     "key": "Weight",
-                    "values": chartDataProvider.weekSummary(model, "Weight")
+                    "values": chartDataProvider.weekSummary(model, "WeightEntry",0)
                 }
             ];
 

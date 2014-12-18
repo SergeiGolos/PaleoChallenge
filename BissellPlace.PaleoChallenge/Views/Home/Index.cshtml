@@ -15,20 +15,12 @@
 		<br />
         <a class="btn btn-primary" ng-click="save(record)">Log</a>        
     </div>
-    <nvd3-line-plus-bar-chart data="chart"
-                              id="exampleId"
-                              margin="{left:100,top:20,bottom:20,right:100}"
-                              xaxistickformat="xAxisTickFormat()"
-                              y1axislabel="{{y1axislabeltext}}"
-                              y2axislabel="{{y2axislabeltext}}"
-                              y1axistickformat="y1AxisTickFormat()"
-                              forcey="[0]"
-                              showlegend="true"
-                              legendwidth="200"
-                              legendheight="300">
-    </nvd3-line-plus-bar-chart>    
+    <div id="weightChart" data-chart-progress-weight="" data-chart="chart">
+        <svg></svg>
+    </div>    
+    {{chart}}   
     <div data-ng-include='"views/entries/" + entry.Type + ".html"' data-ng-repeat="entry in records">{{entry.CheckDate}} </div>
-</div>
+
 
 @{ Html.TemplateRender("~/Content/views"); }
 @section models

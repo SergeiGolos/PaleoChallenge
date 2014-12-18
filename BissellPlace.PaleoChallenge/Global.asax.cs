@@ -23,6 +23,10 @@ namespace BissellPlace.PaleoChallenge
             _container.Install(FromAssembly.This());
             _container.Install(FromAssembly.Named("BissellPlace.PaleoChallenge.EntityDataProvider"));
 
+
+
+
+
         }
 
         protected void Application_Stop()

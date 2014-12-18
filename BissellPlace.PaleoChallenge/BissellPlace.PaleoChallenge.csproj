@@ -207,6 +207,7 @@
   <ItemGroup>
     <Content Include="App\src\app.js" />
     <Content Include="App\src\controllers\home.js" />
+    <Content Include="App\src\directives\chartProgessWeight.js" />
     <Content Include="App\src\services\chartDataProvider.js" />
     <Content Include="App\src\services\errorProvider.js" />
     <Content Include="App\src\services\eventService.js" />
@@ -219,6 +220,8 @@
     <Content Include="App\views\entries\CommentEntry.html" />
     <Content Include="App\views\entries\PointEntry.html" />
     <Content Include="App\views\entries\WeightEntry.html" />
+    <Content Include="App\views\entries\Comment.html" />
+    <Content Include="App\views\entries\Points.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\nv.d3.css" />
@@ -593,7 +596,7 @@
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\src\directives\" />
+    <Folder Include="App\views\directives\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
